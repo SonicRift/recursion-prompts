@@ -56,7 +56,7 @@ var sumBelow = function(n) {
   if (n === 0) {
     return 0;
   }
- 
+
   return (n > 0) ? (n - 1) + sumBelow(n - 1) : (n + 1) + sumBelow(n + 1);
 };
 
@@ -66,9 +66,15 @@ var range = function(x, y) {
   if (x + 1 === y || x === y) {
     return [];
   }
-  var numbers = range(x, y - 1);
-  numbers.push(y - 1);
-  return numbers;
+  if (x > y) {
+    var numbers = range(y, x - 1)
+    numbers.push(x - 1);
+    return numbers.reverse();
+  } else {
+    var numbers = range(x, y - 1);
+    numbers.push(y - 1);
+    return numbers;
+  }
 };
 
 // 7. Compute the exponent of a number.

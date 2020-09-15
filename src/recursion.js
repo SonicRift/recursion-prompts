@@ -31,15 +31,9 @@ var arraySum = function(array) {
     return 0;
   }
 
-  return array.reduce(function fn(a, b) {
-    if (Array.isArray(b)) {
-      return b.reduce(fn, a);
-    } else if (b === Math.round(b)) {
-      return a + b;
-    }
+  var flatArray = array.flat(Infinity);
 
-    return a;
-  }, 0);
+  return flatArray[0] + arraySum(flatArray.slice(1))
 
 };
 
